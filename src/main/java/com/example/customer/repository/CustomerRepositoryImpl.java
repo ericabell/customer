@@ -33,14 +33,16 @@ public class CustomerRepositoryImpl implements CustomerRepository{
         return jdbcTemplate.queryForObject(SELECT_BY_ID_SQL, new CustomerMapper(), id);
     }
 
+    private final String SELECT_SQL = "SELECT * FROM customer";
     @Override
     public List<Customer> getAllCustomers() {
-        return null;
+        return jdbcTemplate.query(SELECT_SQL, new CustomerMapper());
     }
 
+    private final String DELETE_SQL = "DELETE FROM customer WHERE id=?";
     @Override
     public void deleteCustomer(Long id) {
-
+        jdbcTemplate.update(DELETE_SQL, id);
     }
 
     private static class CustomerMapper implements RowMapper<Customer> {
