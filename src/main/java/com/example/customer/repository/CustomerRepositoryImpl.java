@@ -3,8 +3,11 @@ package com.example.customer.repository;
 import com.example.customer.model.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 
 @Repository
@@ -24,9 +27,10 @@ public class CustomerRepositoryImpl implements CustomerRepository{
 
     }
 
+    private final String SELECT_BY_ID_SQL = "SELECT * FROM customer WHERE id = ?";
     @Override
     public Customer findCustomerById(Long id) {
-        return null;
+        return jdbcTemplate.queryForObject(SELECT_BY_ID_SQL, new CustomerMapper(), id);
     }
 
     @Override
@@ -37,5 +41,18 @@ public class CustomerRepositoryImpl implements CustomerRepository{
     @Override
     public void deleteCustomer(Long id) {
 
+    }
+
+    private static class CustomerMapper implements RowMapper<Customer> {
+        @Override
+        public Customer mapRow(ResultSet resultSet, int i) throws SQLException {
+            Customer customer = new Customer();
+            customer.setId(resultSet.getLong("id"));
+            customer.setFirstName(resultSet.getString("firstName"));
+            customer.setLastName(resultSet.getString("lastName"));
+            customer.setPhone(resultSet.getString("phone"));
+            customer.setEmail(resultSet.getString("email"));
+            return customer;
+        }
     }
 }
