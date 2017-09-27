@@ -22,9 +22,10 @@ public class CustomerRepositoryImpl implements CustomerRepository{
         jdbcTemplate.update(INSERT_SQL, c.getFirstName(), c.getLastName(), c.getPhone(), c.getEmail());
     }
 
+    private final String UPDATE_SQL = "UPDATE customer SET firstName=?, lastName=?, phone=?, email=? WHERE id=?";
     @Override
     public void updateCustomer(Long id, Customer c) {
-
+        jdbcTemplate.update(UPDATE_SQL, c.getFirstName(), c.getLastName(), c.getPhone(), c.getEmail(), id);
     }
 
     private final String SELECT_BY_ID_SQL = "SELECT * FROM customer WHERE id = ?";
