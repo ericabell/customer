@@ -47,5 +47,9 @@ public class CustomerServiceTest {
 
         // update the table
         customerService.updateCustomer(customerToUpdate.getId(), customerToUpdate);
+
+        // check to make sure the update occurred
+        customers = customerService.getAllCustomers();
+        Assert.assertEquals(customers.get(0).getFirstName(), "Bob");
     }
 }

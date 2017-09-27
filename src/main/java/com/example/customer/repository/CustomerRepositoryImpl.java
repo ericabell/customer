@@ -46,6 +46,12 @@ public class CustomerRepositoryImpl implements CustomerRepository{
         jdbcTemplate.update(DELETE_SQL, id);
     }
 
+    private final String DELETE_ALL_SQL = "DELETE FROM customer";
+    @Override
+    public void deleteAllCustomers() {
+        jdbcTemplate.update(DELETE_ALL_SQL);
+    }
+
     private static class CustomerMapper implements RowMapper<Customer> {
         @Override
         public Customer mapRow(ResultSet resultSet, int i) throws SQLException {
