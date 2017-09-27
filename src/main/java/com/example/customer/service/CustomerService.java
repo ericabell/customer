@@ -10,4 +10,5 @@ public interface CustomerService {
     public Customer findCustomerById(Long id);
     public List<Customer> getAllCustomers();
     public void deleteCustomer(Long id);
+    public void deleteAllCustomers();
 }
