@@ -33,4 +33,9 @@ public class CustomerController {
         //return the template
         return "customers";
     }
+
+    @RequestMapping("/add-customer")
+    public String addCustomer(Model model) {
+        return "add-customer";
+    }
 }
