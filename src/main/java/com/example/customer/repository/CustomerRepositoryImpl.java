@@ -24,13 +24,13 @@ public class CustomerRepositoryImpl implements CustomerRepository{
 
     private final String UPDATE_SQL = "UPDATE customer SET firstName=?, lastName=?, phone=?, email=? WHERE id=?";
     @Override
-    public void updateCustomer(Long id, Customer c) {
+    public void updateCustomer(int id, Customer c) {
         jdbcTemplate.update(UPDATE_SQL, c.getFirstName(), c.getLastName(), c.getPhone(), c.getEmail(), id);
     }
 
     private final String SELECT_BY_ID_SQL = "SELECT * FROM customer WHERE id = ?";
     @Override
-    public Customer findCustomerById(Long id) {
+    public Customer findCustomerById(int id) {
         return jdbcTemplate.queryForObject(SELECT_BY_ID_SQL, new CustomerMapper(), id);
     }
 
@@ -42,7 +42,7 @@ public class CustomerRepositoryImpl implements CustomerRepository{
 
     private final String DELETE_SQL = "DELETE FROM customer WHERE id=?";
     @Override
-    public void deleteCustomer(Long id) {
+    public void deleteCustomer(int id) {
         jdbcTemplate.update(DELETE_SQL, id);
     }
 
@@ -56,7 +56,7 @@ public class CustomerRepositoryImpl implements CustomerRepository{
         @Override
         public Customer mapRow(ResultSet resultSet, int i) throws SQLException {
             Customer customer = new Customer();
-            customer.setId(resultSet.getLong("id"));
+            customer.setId(resultSet.getInt("id"));
             customer.setFirstName(resultSet.getString("firstName"));
             customer.setLastName(resultSet.getString("lastName"));
             customer.setPhone(resultSet.getString("phone"));

@@ -6,9 +6,9 @@ import java.util.List;
 
 public interface CustomerService {
     public void addCustomer(Customer c);
-    public void updateCustomer(Long id, Customer c);
-    public Customer findCustomerById(Long id);
+    public void updateCustomer(int id, Customer c);
+    public Customer findCustomerById(int id);
     public List<Customer> getAllCustomers();
-    public void deleteCustomer(Long id);
+    public void deleteCustomer(int id);
     public void deleteAllCustomers();
 }

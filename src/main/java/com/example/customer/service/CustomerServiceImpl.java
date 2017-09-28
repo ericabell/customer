@@ -21,12 +21,12 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     @Transactional
-    public void updateCustomer(Long id, Customer c) {
+    public void updateCustomer(int id, Customer c) {
         customerRepository.updateCustomer(id, c);
     }
 
     @Override
-    public Customer findCustomerById(Long id) {
+    public Customer findCustomerById(int id) {
         return customerRepository.findCustomerById(id);
     }
 
@@ -37,7 +37,7 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     @Transactional
-    public void deleteCustomer(Long id) {
+    public void deleteCustomer(int id) {
         customerRepository.deleteCustomer(id);
     }
 

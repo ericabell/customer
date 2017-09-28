@@ -1,7 +1,7 @@
 package com.example.customer.model;
 
 public class Customer {
-    Long id;
+    int id;
     String firstName;
     String lastName;
     String phone;
@@ -10,11 +10,11 @@ public class Customer {
     public Customer() {
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
