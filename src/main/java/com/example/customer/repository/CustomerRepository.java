@@ -1,14 +1,9 @@
 package com.example.customer.repository;
 
 import com.example.customer.model.Customer;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface CustomerRepository {
-    public void addCustomer(Customer c);
-    public void updateCustomer(int id, Customer c);
-    public Customer findCustomerById(int id);
-    public List<Customer> getAllCustomers();
-    public void deleteCustomer(int id);
-    public void deleteAllCustomers();
+public interface CustomerRepository extends JpaRepository<Customer, Integer> {
 }

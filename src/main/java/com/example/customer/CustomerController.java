@@ -2,6 +2,7 @@ package com.example.customer;
 
 import com.example.customer.model.Customer;
 import com.example.customer.service.CustomerService;
+import com.example.customer.service.CustomerServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,7 +14,7 @@ import java.util.List;
 @Controller
 public class CustomerController {
     @Autowired
-    CustomerService customerService;
+    CustomerServiceImpl customerService;
 
     @RequestMapping("/")
     public String index(Model model) {
