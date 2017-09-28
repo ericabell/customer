@@ -6,10 +6,7 @@ import com.example.customer.service.CustomerServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,6 +55,16 @@ public class CustomerController {
 
         customerService.addCustomer(newCustomer);
 
-        return "redirect:/";
+        return "redirect:/customers";
+    }
+
+    @GetMapping("/customer/{id}")
+    public String getCustomer(Model model,
+            @PathVariable("id") Integer id
+    ) {
+        Customer customer = customerService.findCustomerById(id);
+        model.addAttribute(customer);
+
+        return "view-customer";
     }
 }
