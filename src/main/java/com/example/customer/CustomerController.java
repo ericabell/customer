@@ -67,4 +67,17 @@ public class CustomerController {
 
         return "view-customer";
     }
+
+    @GetMapping("/login")
+    public String loginGET() {
+        return "login";
+    }
+
+    @PostMapping("/login")
+    public String login(@RequestParam(value="username") String username,
+                        @RequestParam(value="password") String password
+                        ) {
+
+        return "redirect:/customers";
+    }
 }
