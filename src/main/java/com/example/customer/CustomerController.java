@@ -77,6 +77,7 @@ public class CustomerController {
     public String login(@RequestParam(value="username") String username,
                         @RequestParam(value="password") String password
                         ) {
+        System.out.println("POST to login");
 
         return "redirect:/customers";
     }
